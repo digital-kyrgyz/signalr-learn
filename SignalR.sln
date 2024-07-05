@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Web", "SignalR.Web\SignalR.Web.csproj", "{B8F436E3-FE8C-4FF5-B0FB-589AA598FD7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.ConsoleApp", "SignalR.ConsoleApp\SignalR.ConsoleApp.csproj", "{A60EA95B-0A62-44B6-8CA9-C1909E110A2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Identity", "SignalR.Identity\SignalR.Identity.csproj", "{9E68374A-B2E5-4DFB-8AEE-EF2F5E11E393}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8F436E3-FE8C-4FF5-B0FB-589AA598FD7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F436E3-FE8C-4FF5-B0FB-589AA598FD7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F436E3-FE8C-4FF5-B0FB-589AA598FD7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F436E3-FE8C-4FF5-B0FB-589AA598FD7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A60EA95B-0A62-44B6-8CA9-C1909E110A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A60EA95B-0A62-44B6-8CA9-C1909E110A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A60EA95B-0A62-44B6-8CA9-C1909E110A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A60EA95B-0A62-44B6-8CA9-C1909E110A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E68374A-B2E5-4DFB-8AEE-EF2F5E11E393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E68374A-B2E5-4DFB-8AEE-EF2F5E11E393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E68374A-B2E5-4DFB-8AEE-EF2F5E11E393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E68374A-B2E5-4DFB-8AEE-EF2F5E11E393}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
