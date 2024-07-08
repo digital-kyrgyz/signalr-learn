@@ -1,3 +1,5 @@
-﻿namespace SignalR.Identity.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record SignUpDto(string Email, string Password, string ConfirmPassword);
+namespace SignalR.Identity.Models;
+
+public record SignUpDto([Required]string Email, [Required]string Password, [Required]string ConfirmPassword);

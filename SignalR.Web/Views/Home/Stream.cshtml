@@ -1,0 +1,12 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+@section Scripts
+{
+    <script src="~/js/signralr-stream-client.js"></script>
+}
+<input class="form-control" id="stream" type="text" value="ahmet;mehmet;hasan;emre;ayse;"/>
+<button id="btn-stream">Submit data (by chunk)</button>

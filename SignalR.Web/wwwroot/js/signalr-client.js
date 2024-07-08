@@ -33,7 +33,7 @@
     } catch {
         setTimeout(() => start(), 5000);
     }
-    //
+    
     let connectedClientCount = $("#connected-client-count");
 
     connection.on(receiveConnectedClientCountAllClient, (count) => {
