@@ -4,7 +4,33 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-
+@section Scripts
+{
+    <script>
+    $(document).ready(function (){
+        $("#btn-create-excel").click(function (){
+           $.ajax({
+                url: "/Home/CreateExcel",
+                type: "GET",
+                dataType: "json",
+                success: function (data){
+                    $(".toast-body").html("Excel writing process is staring. When end you will be notified");
+                    $("#liveToast").show();
+                    toastTimeout = setTimeout(() => {
+                        $("liveToast").hide();
+                    }, 3000);
+                },
+                error: function (err){
+                    console.log(err);
+                }
+           }) 
+        });
+    });
+    </script>
+}
+<p>
+    <a href="#" id="btn-create-excel">Create Excel</a>
+</p>
 <table class="table">
     <thead>
     <tr>

@@ -11,4 +11,6 @@ public interface IExampleTypeSafeHub
     Task ReceiveMessageOthersCallerClient(string message);
     Task ReceiveMessageForIndividualClient(string message);
     Task ReceiveMessageForGroupClient(string message);
+    Task ReceiveMessageAsStreamForAllClient(string name);
+    Task ReceiveProductAsStreamForAllClient(Product product);
 }

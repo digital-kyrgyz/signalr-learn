@@ -1,25 +1,29 @@
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.Identity.Infrastructure;
 using SignalR.Identity.Models;
+using SignalR.Identity.Services;
 
 namespace SignalR.Identity.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private UserManager<IdentityUser> _userManager;
-    private SignInManager<IdentityUser> _signInManager;
-    private AppDbContext _appDbContext;
+    private readonly UserManager<IdentityUser> _userManager;
+    private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly AppDbContext _appDbContext;
+    private readonly FileService _fileService;
 
     public HomeController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager,
-        SignInManager<IdentityUser> signInManager, AppDbContext appDbContext)
+        SignInManager<IdentityUser> signInManager, AppDbContext appDbContext, FileService fileService)
     {
         _logger = logger;
         _userManager = userManager;
         _signInManager = signInManager;
         _appDbContext = appDbContext;
+        _fileService = fileService;
     }
 
     public IActionResult Index()
@@ -107,6 +111,17 @@ public class HomeController : Controller
         await _appDbContext.SaveChangesAsync();
 
         return View(productList);
+    }
+
+    [Authorize]
+    [HttpGet]
+    public async Task<IActionResult> CreateExcel()
+    {
+        var response = new
+        {
+            Status = await _fileService.AddMessageToQueue(),
+        };
+        return Json(response);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

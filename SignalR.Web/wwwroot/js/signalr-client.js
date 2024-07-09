@@ -21,18 +21,24 @@
     
     const receiveConnectedClientCountAllClient = "ReceiveConnectedClientCountAllClient";
 
-    function start() {
-        connection.start().then(() => {
-            $("#connection-id").html("connection id: " + connection.connectionId);
-            console.log("Connection opened with hub");
-        });
+    async function start() {
+        try {
+            await connection.start().then(() => {
+                $("#connection-id").html("connection id: " + connection.connectionId);
+                console.log("Connection opened with hub");
+            });
+        } catch(err) {
+            console.log("Connection failed: ", err);
+            setTimeout(() => start(), 5000);
+        }
+
     }
 
-    try {
-        start();
-    } catch {
-        setTimeout(() => start(), 5000);
-    }
+    connection.onclose(async () => {
+        await start();
+    });
+
+    start();
     
     let connectedClientCount = $("#connected-client-count");
 
