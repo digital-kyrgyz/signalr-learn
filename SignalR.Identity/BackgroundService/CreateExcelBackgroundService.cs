@@ -27,7 +27,7 @@ public class CreateExcelBackgroundService : Microsoft.Extensions.Hosting.Backgro
     {
         while (await _channel.Reader.WaitToReadAsync(stoppingToken))
         {
-            await Task.Delay(4000);
+            await Task.Delay(7000);
             var (userId, products) = await _channel.Reader.ReadAsync(stoppingToken);
             var wwwRootFolder = _fileProvider.GetDirectoryContents("wwwroot");
             var filesFolder = wwwRootFolder.Single(x => x.Name == "Files");

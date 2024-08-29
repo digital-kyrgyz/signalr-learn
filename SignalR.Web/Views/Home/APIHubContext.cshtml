@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@section Scripts
+{
+    <script>
+    $(document).ready(function (){
+           const connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7000/myHub").configureLogging(signalR.LogLevel.Information).build();
+           //settings
+           async function start() {
+               try {
+                   await connection.start().then(() => {
+                       $("#connection-id").html("connection id: " + connection.connectionId);
+                       console.log("Connection opened with hub (API)");
+                   });
+               } catch (err) {
+                   console.log("Connection failed: ", err);
+                   setTimeout(() => start(), 3000);
+               }
+       
+           }
+       
+           connection.onclose(async () => {
+               await start();
+           });
+           
+           start(); 
+           
+           //
+           const broadcastMessageToAllClient = "BroadcastMessageToAllClient"
+           const receiveMessageForAllClient = "ReceiveMessageForAllClient"
+           //subscribe
+           
+           connection.on(receiveMessageForAllClient, (message) => {
+                console.log("Message from API: ", message);    
+           })
+           
+           //events
+           $("#btn-api-hub-context").click(function () {
+               const message = "Message to API (Hello world)";
+               connection.invoke(broadcastMessageToAllClient, message).catch(err => console.error("Error: " + err));
+           });
+           
+    });
+    </script>
+}
+<h1>API IHubContext</h1>
+<button id="btn-api-hub-context">Submit (API hub context)</button>

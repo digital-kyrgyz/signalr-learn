@@ -26,7 +26,9 @@
     connection.onclose(async () => {
         await start();
     });
-
+    
+    start();
+    
     //subscribe
     connection.on(receiveMessageAsStreamForAllClient, (name) => {
         $("#stream-box").append(`<p>${name}</p>`)
@@ -72,6 +74,4 @@
            next: (message) => $("#stream-box").append(`<p>${message}</p>`)
        });
     });
-
-    start();
 });
